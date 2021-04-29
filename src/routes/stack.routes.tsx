@@ -12,6 +12,7 @@ import {PlantSelect} from "../pages/PlantSelect";
 import {PlantSave} from "../pages/PlantSave";
 import {MyPlants} from "../pages/MyPlants";
 import AuthRoutes from "./tab.routes";
+import {EditUser} from "../pages/EditUser";
 
 const stackRoutes = createStackNavigator();
 
@@ -39,6 +40,10 @@ const AppRoutes: React.FC = () => (
         <stackRoutes.Screen
             name="PlantSelect"
             component={AuthRoutes}
+        />
+        <stackRoutes.Screen
+            name="EditUser"
+            component={EditUser}
         />
         <stackRoutes.Screen
             name="PlantSave"
