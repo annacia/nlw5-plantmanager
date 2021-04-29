@@ -15,7 +15,7 @@ import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 
 export function Header(){
-    const [username, setUsername] = useState<string>();
+    const [username, setUsername] = useState<string>('');
     const [image, setImage] = useState<string>('');
     const navigation = useNavigation();
 
@@ -51,7 +51,7 @@ export function Header(){
                         <AntDesign name="camera" size={40} color={colors.green_dark} style={styles.iconLayer}/>
                     </View>
                 }
-                {image !== undefined && <Image source={{ uri: image }} style={styles.img} />}
+                {image !== '' && <Image source={{ uri: image }} style={styles.img} />}
             </View>
             <TouchableOpacity style={styles.icon} activeOpacity={0.8} onPress={() => navigation.navigate('EditUser')}>
                 <FontAwesome5 name="edit" size={14} color={colors.green_dark} />

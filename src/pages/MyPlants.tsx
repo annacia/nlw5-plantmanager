@@ -48,17 +48,27 @@ export function MyPlants(){
         async function loadStorageData() {
             const plantsStoraged = await loadPlant();
 
-            const nextTime = formatDistance(
-                new Date(plantsStoraged[0].dateTimeNotification).getTime(),
-                new Date().getTime(),
-                {locale: pt}
-            );
+            console.log(plantsStoraged)
+            if (plantsStoraged) {
+                const nextTime = formatDistance(
+                    new Date(plantsStoraged[0].dateTimeNotification).getTime(),
+                    new Date().getTime(),
+                    {locale: pt}
+                );
+
+                setNextWatered(
+                    `Não esqueça de regar a ${plantsStoraged[0].name} à ${nextTime} horas`
+                );
+
+                setMyPlants(plantsStoraged);
+                setLoading(false);
+                return;
+            }
 
             setNextWatered(
-                `Não esqueça de regar a ${plantsStoraged[0].name} à ${nextTime} horas`
+                'Você ainda não adicionou uma plantinha 😥'
             );
-
-            setMyPlants(plantsStoraged);
+            setMyPlants([]);
             setLoading(false);
         }
 
@@ -84,22 +94,25 @@ export function MyPlants(){
             </View>
 
             <View style={styles.plants}>
-                <Text style={styles.plantsTitle}>
-                    Próximas regadas
-                </Text>
-
-                <FlatList
-                    data={myPlants}
-                    keyExtractor={(item) => String(item.id)}
-                    renderItem={({item}) => (
-                        <PlantCardSecondary
-                            data={item}
-                            handleRemove={() => handleRemove(item)}
-                        />
-                    )}
-                    showsVerticalScrollIndicator={false}
-                    contentContainerStyle={{flex: 1}}
-                />
+                {myPlants &&
+                    <>
+                    <Text style={styles.plantsTitle}>
+                        Próximas regadas
+                    </Text>
+                    <FlatList
+                        data={myPlants}
+                        keyExtractor={(item) => String(item.id)}
+                        renderItem={({item}) => (
+                            <PlantCardSecondary
+                                data={item}
+                                handleRemove={() => handleRemove(item)}
+                            />
+                        )}
+                        showsVerticalScrollIndicator={false}
+                        contentContainerStyle={{flex: 1}}
+                    />
+                    </>
+                }
             </View>
 
         </View>
@@ -112,7 +125,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "space-between",
         paddingHorizontal: 30,
-        paddingTop: 50,
         backgroundColor: colors.background
     },
     spotlight: {
