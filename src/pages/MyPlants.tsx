@@ -73,7 +73,7 @@ export function MyPlants(){
         }
 
         loadStorageData();
-    }, [])
+    }, [myPlants])
 
     if (loading) {
         return <Load/>

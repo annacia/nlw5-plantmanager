@@ -78,7 +78,7 @@ export function EditUser(){
 
         loadStorageUsername();
 
-    }, [username]);
+    }, []);
 
     useEffect(() => {
         (async () => {
