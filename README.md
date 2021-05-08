@@ -40,8 +40,16 @@ Projeto PlantManager realizado na trilha de React Native no evento NLW#5 da Rock
 
 ## 📺 Demonstração
 
-![demo](./public/img/demo1.gif)<br/><br/>
-![demo](./public/img/demo2.gif)
+- Cadastro de dados do usuário local:
+<p align="center">
+  <img src="./public/img/demo1.gif" width="350" height="auto" />
+</p>
+<br/><br/>
+
+- Seleção de plantas a partir do ambiente:
+<p align="center">
+  <img src="./public/img/demo2.gif" width="352" height="auto" />
+</p>
 
 ****
 <div id='local'/>
